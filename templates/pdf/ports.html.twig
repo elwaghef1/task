@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ports PDF</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <h1>List of Ports</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for port in entities %}
+            <tr>
+                <td>{{ port.name }}</td>
+                <td>{{ port.address }}</td>
+                <td>{{ port.postalCode }}</td>
+                <td>{{ port.city }}</td>
+                <td>{{ port.country }}</td>
+                <td>{{ port.email }}</td>
+                <td>{{ port.phone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

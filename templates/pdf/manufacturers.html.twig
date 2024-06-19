@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manufacturers PDF</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <h1>List of Manufacturers</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Alias</th>
+                <th>Reference</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for manufacturer in entities %}
+            <tr>
+                <td>{{ manufacturer.name }}</td>
+                <td>{{ manufacturer.alias }}</td>
+                <td>{{ manufacturer.reference }}</td>
+                <td>{{ manufacturer.comment }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

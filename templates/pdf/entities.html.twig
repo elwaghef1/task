@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Entities PDF</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <h1>List of Entities</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Photo</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Segment</th>
+                    <th>Decision</th>
+                    <th>Price Variation</th>
+                    <th>Reference</th>
+                    <th>Alias</th>
+                    <th>Manufacturers</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+            <tr>
+                <td>{{ entity.photo }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>{{ entity.id }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.segment }}</td>
+                    <td>{{ entity.decision }}</td>
+                    <td>{{ entity.priceVariation }}</td>
+                    <td>{{ entity.reference }}</td>
+                    <td>{{ entity.alias }}</td>
+                    <td>
+                        <ul>
+                            {% for manufacturer in entity.manufacturers %}
+                                <li>{{ manufacturer.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
