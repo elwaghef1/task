@@ -49,21 +49,20 @@ class PdfController extends AbstractController
     }
 
     private function downloadEntitiesPdf(EntityManagerInterface $entityManager, string $class, string $template, string $filename): Response
-    {
-        $entities = $entityManager->getRepository($class)->findAll();
-
-        if (!$entities) {
-            throw $this->createNotFoundException('No entities found');
-        }
-
-        $groups = $this->isGranted('ROLE_ADMIN') ? ['admin:read'] : ['public:read'];
-        $normalizedEntities = $this->normalizer->normalize($entities, null, ['groups' => $groups]);
-
-        $pdfContent = $this->pdfGenerator->generatePdf($template, ['entities' => $normalizedEntities]);
-
-        return new Response($pdfContent, 200, [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
-        ]);
+{
+    $entities = $entityManager->getRepository($class)->findAll();
+    if (!$entities) {
+        throw $this->createNotFoundException('No entities found');
     }
+
+    // Normaliser les entités sans spécifier de groupes
+    $normalizedEntities = $this->normalizer->normalize($entities);
+
+    $pdfContent = $this->pdfGenerator->generatePdf($template, ['entities' => $normalizedEntities]);
+
+    return new Response($pdfContent, 200, [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+    ]);
+}
 }
