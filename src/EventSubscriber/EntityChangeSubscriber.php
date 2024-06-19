@@ -4,9 +4,9 @@ namespace App\EventSubscriber;
 
 use ApiPlatform\Symfony\EventListener\EventPriorities;
 use App\Entity\Entity;
-use App\Entity\Port;
 use App\Entity\Manufacturer;
 use App\Entity\Model;
+use App\Entity\Port;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,7 +52,7 @@ final class EntityChangeSubscriber implements EventSubscriberInterface
             return; // If the entity is not one of the specified types, do nothing
         }
 
-        $action = $method === Request::METHOD_POST ? 'created' : 'updated';
+        $action = Request::METHOD_POST === $method ? 'created' : 'updated';
 
         // Log the entity changes using Monolog
         $this->logger->info(sprintf('%s %s:', $entityName, $action), [

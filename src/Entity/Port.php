@@ -4,8 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
 #[ApiResource]
@@ -33,7 +33,7 @@ class Port
 
     #[ORM\Column(type: 'string', length: 10)]
     #[Assert\NotBlank]
-    #[Assert\Regex(pattern: "/^\d{5}$/", message: "Invalid postal code")]
+    #[Assert\Regex(pattern: "/^\d{5}$/", message: 'Invalid postal code')]
     #[Groups(['port:read', 'port:write', 'public:read'])]
     private string $postalCode;
 
@@ -53,7 +53,7 @@ class Port
     private ?string $email = null;
 
     #[ORM\Column(type: 'string', length: 20, nullable: true)]
-    #[Assert\Regex(pattern: "/^\+?[0-9\s\-]*$/", message: "Invalid phone number")]
+    #[Assert\Regex(pattern: "/^\+?[0-9\s\-]*$/", message: 'Invalid phone number')]
     #[Groups(['port:read', 'port:write'])]
     private ?string $phone = null;
 
@@ -81,6 +81,7 @@ class Port
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -92,6 +93,7 @@ class Port
     public function setAddress(string $address): self
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -103,6 +105,7 @@ class Port
     public function setAddressComplement(?string $addressComplement): self
     {
         $this->addressComplement = $addressComplement;
+
         return $this;
     }
 
@@ -114,6 +117,7 @@ class Port
     public function setPostalCode(string $postalCode): self
     {
         $this->postalCode = $postalCode;
+
         return $this;
     }
 
@@ -125,6 +129,7 @@ class Port
     public function setCity(string $city): self
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -136,6 +141,7 @@ class Port
     public function setCountry(string $country): self
     {
         $this->country = $country;
+
         return $this;
     }
 
@@ -147,6 +153,7 @@ class Port
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -158,6 +165,7 @@ class Port
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
         return $this;
     }
 }

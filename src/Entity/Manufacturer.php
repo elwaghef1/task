@@ -4,8 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource()]
 #[ORM\Entity]
@@ -52,6 +52,7 @@ class Manufacturer
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -63,6 +64,7 @@ class Manufacturer
     public function setAlias(?string $alias): self
     {
         $this->alias = $alias;
+
         return $this;
     }
 
@@ -74,6 +76,7 @@ class Manufacturer
     public function setReference(int $reference): self
     {
         $this->reference = $reference;
+
         return $this;
     }
 
@@ -85,6 +88,7 @@ class Manufacturer
     public function setComment(?string $comment): self
     {
         $this->comment = $comment;
+
         return $this;
     }
 
@@ -96,6 +100,7 @@ class Manufacturer
     public function setEntity(Entity $entity): self
     {
         $this->entity = $entity;
+
         return $this;
     }
 }

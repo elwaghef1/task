@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Port;
-use App\Entity\Model;
-use App\Entity\Manufacturer;
 use App\Entity\Entity;
+use App\Entity\Manufacturer;
+use App\Entity\Model;
+use App\Entity\Port;
 use App\Service\PdfGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -63,7 +63,7 @@ class PdfController extends AbstractController
 
         return new Response($pdfContent, 200, [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="' . $filename . '"'
+            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
         ]);
     }
 }
