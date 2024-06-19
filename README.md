@@ -17,3 +17,5 @@
 - /pdf/ports
 
 To login : chose one of the users in the AppFixtures  : POST /api/login_check 
+
+logs are saved in /var/log/entity_changes.log
